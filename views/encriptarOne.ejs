@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>encripti | Modo 1</title>
+</head>
+<body>
+
+    <h2>Encriptar</h2>
+
+    <form action="./encriptOne" method="post">
+        <label for="archivotxt">
+            Ingresa el archivo de texto a encriptar 
+        </label>
+        
+        <input type="file" name="archivotxt" id="fileUser">
+
+        <input type="submit" value="Encriptar">
+    </form>
+
+    <h2>Desencriptar</h2>
+
+    <form action="./descencriptOne" method="post">
+        <label for="archivotxt">
+            Ingresa el archivo de texto a decencriptar
+        </label>
+        
+        <input type="file" name="encripttxt" id="fileEncriptUser">
+
+        <input type="submit" value="Descencriptar">
+    </form>
+
+</body>
+</html>
