@@ -4,33 +4,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>encripti | Modo 1</title>
+    <title>encripty | Modo AES</title>
 </head>
 <body>
 
-    <h2>Encriptar</h2>
+    <h1>Encriptar en Modo AES</h1>
 
-    <form action="./encriptOne" method="post">
-        <label for="archivotxt">
-            Ingresa el archivo de texto a encriptar 
-        </label>
+    <div class="encriptFileContainer">
+        <h2>Encriptar archivo</h2>
+        <form action="./encriptOne" method="post">
+            <label for="archivotxt">
+                Ingresa el archivo de texto a encriptar 
+            </label>
+            
+            <input type="file" name="archivotxt" id="fileUser">
+    
+            <input type="submit" value="Encriptar">
+        </form>
+    
+        <h2>Desencriptar</h2>
+    
+        <form action="./descencriptOne" method="post">
+            <label for="archivotxt">
+                Ingresa el archivo de texto a decencriptar
+            </label>
+            
+            <input type="file" name="encripttxt" id="fileEncriptUser">
+    
+            <input type="submit" value="Descencriptar">
+        </form>
+    </div>
+
+    <div class="encriptTxt">
+        <div class="sectionEncriptText">
+            <h2>Encriptar texto</h2>
         
-        <input type="file" name="archivotxt" id="fileUser">
+        <form action="/encriptarOne/encriptAES" method="post">
+            <label for="userText">Introduce el texto a cifrar</label>
+            <input type="text" name="userText" id="userText">
 
-        <input type="submit" value="Encriptar">
-    </form>
+            <label for="userPassword">Introduce una clave que sera necesaria para descifrar</label>
+            <input type="text" name="userPassword" id="userPassword">
 
-    <h2>Desencriptar</h2>
+            <input type="submit" value="Cifrar">
+        </form>
 
-    <form action="./descencriptOne" method="post">
-        <label for="archivotxt">
-            Ingresa el archivo de texto a decencriptar
-        </label>
+        <% if (typeof textEncript == 'object' && textEncript) { %>
+            <p>Texto cifrado: <br>
+                <span id="criptyText">
+                    <%=textEncript%>
+                </span>
+            </p>
+        <% } %>
+        </div>
         
-        <input type="file" name="encripttxt" id="fileEncriptUser">
+        <div class="sectionDescriptText">
+            <h2>Descifrar texto</h2>
+        
+        <form action="/encriptarOne/descencriptAES" method="post">
+            <label for="userText">Introduce el hash a Decifrar</label>
+            <input type="text" name="userDescText" id="userText">
 
-        <input type="submit" value="Descencriptar">
-    </form>
+            <label for="userPassword">Introduce una clave que estableciste para descifrar</label>
+            <input type="text" name="userDescPassword" id="userPassword">
+
+            <input type="submit" value="Descifrar">
+        </form>
+
+        <% if (typeof textDescript == 'object' && textDescript) { %>
+            <p>Texto descifrado: <br>
+                <span id="criptyText">
+                    <%=textDescript%>
+                </span>
+            </p>
+        <% } %>
+        </div>
+        
+
+    </div>
+    
 
 </body>
 </html>

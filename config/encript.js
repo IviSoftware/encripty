@@ -1,37 +1,61 @@
+const MD5 = require('crypto-js/md5');
+const SHA1 = require('crypto-js/sha1');
+const SHA256 = require('crypto-js/sha256');
+const HmacSHA1 = require('crypto-js/hmac-sha1');
+const HmacSHA256 = require('crypto-js/hmac-sha256');
+const path = require('path');
+
 const CryptoJS = require('crypto-js');
 
 module.exports={
-    encript:function(userFile){
+    encriptText:function(messageUser,keyUser){
+        let message = messageUser;
+        let key = keyUser;
        
+        // Uso 2: Todo el uso, debido a que aes contiene cifrado y descifrado, hay dos métodos, no puede usar AES directamente para cifrar
+        let result = CryptoJS.AES.encrypt(message, key);      
+        return result
+    }
+    ,
+    descriptText:function(hashUser,keyUser){
+      
+        let result2=CryptoJS.AES.decrypt(hashUser, keyUser).toString(CryptoJS.enc.Utf8)
+        return result2
+    
+    }
+    ,
+    encriptFile:function(){
         function encryp(data, key){
             return CryptoJS.AES.encrypt(data, key).toString();
         }
-
+        
         function decryp(data, key){
             var wA= CryptoJS.AES.decrypt(data, key);
             return wA.toString(CryptoJS.enc.Utf8);
         }
-
-        const args= process.argv;
-
+        
+      /*   const args= process.argv;
+        
         if(args.length<7){
             console.log(`Uso: node cfrf.js <file-input> <op ['enc' || 'des']> <pass> <deep> <file-out>\n\n 
-                        Ejem: node cfrf.js texto.txt enc clave_secreta 3 texto.txt.cfr`);
-            
-        }
-
-        var file_inp= userFile;
-        var op= 'enc' ;
-        var pass= 'clave_secreta';
+                         Ejem: node cfrf.js texto.txt enc clave_secreta 3 texto.txt.cfr`);
+            return;
+        } */
+        const absolutePath = path.join(__dirname,'/ejemplo.txt');
+        console.log(absolutePath)
+        
+        var file_inp=  absolutePath;
+        var op= 'enc';
+        var pass= 'clave';
         var deep= 3;
-        var file_out= 'archivo.txt.cfr';
-
-
+        var file_out= 'texto.txt.cfr';
+        
+        
         var fs = require('fs');
         var binary = fs.readFileSync(file_inp);
-
+        
         var buffer=null;
-
+        
         if(op=='enc'){    
             let base64data = binary.toString('base64');
             let enc=base64data;
@@ -48,7 +72,7 @@ module.exports={
             }
             buffer = Buffer.from(dec, 'base64');
         }
-
+        
         fs.open(file_out, 'w', function(err, fd) {
             if (err) {
                 throw 'No se puede crear el archivo: ' + err;
@@ -59,7 +83,8 @@ module.exports={
                 fs.close(fd, function() {});
             });
         });
-
+        
+        
     }
 }
 
