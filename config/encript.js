@@ -24,27 +24,20 @@ module.exports={
     
     }
     ,
-    encriptFile:function(){
+    encriptFile:function(userFile){
         function encryp(data, key){
             return CryptoJS.AES.encrypt(data, key).toString();
         }
         
-        function decryp(data, key){
+        /* function decryp(data, key){
             var wA= CryptoJS.AES.decrypt(data, key);
             return wA.toString(CryptoJS.enc.Utf8);
-        }
-        
-      /*   const args= process.argv;
-        
-        if(args.length<7){
-            console.log(`Uso: node cfrf.js <file-input> <op ['enc' || 'des']> <pass> <deep> <file-out>\n\n 
-                         Ejem: node cfrf.js texto.txt enc clave_secreta 3 texto.txt.cfr`);
-            return;
         } */
-        const absolutePath = path.join(__dirname,'/ejemplo.txt');
-        console.log(absolutePath)
         
-        var file_inp=  absolutePath;
+     /*    const absolutePath = path.join(__dirname,'/ejemplo.txt');
+        console.log(absolutePath) */
+        
+        var file_inp=  userFile;
         var op= 'enc';
         var pass= 'clave';
         var deep= 3;
@@ -64,6 +57,8 @@ module.exports={
             }
             
             buffer = Buffer.from(enc, "utf-8");
+
+            
         }else if(op=='des'){
             let dataS= binary.toString("ascii");
             let dec=dataS;

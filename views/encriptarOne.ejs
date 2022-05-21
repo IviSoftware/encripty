@@ -12,15 +12,32 @@
 
     <div class="encriptFileContainer">
         <h2>Encriptar archivo</h2>
-        <form action="./encriptOne" method="post">
+        <form action="/encriptarOne/upload" method="post" enctype="multipart/form-data">
             <label for="archivotxt">
                 Ingresa el archivo de texto a encriptar 
             </label>
             
-            <input type="file" name="archivotxt" id="fileUser">
+            <input type="file" name="files" id="files" required >
     
-            <input type="submit" value="Encriptar">
+            <input type="submit" value="Subir archivo">
         </form>
+        
+            <% if (locals.uploadOk) { %>
+                <div class="cifrarTextContainer">
+                    <p>icon</p>
+                  
+                    <form action="/encriptarOne/encriptFileAES" method="post">
+                        <button type="submit">Encriptar</button>
+                    </form>
+                   
+                    <% if (locals.encriptyOK) { %>
+                        <a href="/encriptarOne/dowload">Descargar</a>
+                    <% } %>
+                </div>
+            <% } %>
+        
+
+
     
         <h2>Desencriptar</h2>
     
@@ -49,7 +66,7 @@
             <input type="submit" value="Cifrar">
         </form>
 
-        <% if (typeof textEncript == 'object' && textEncript) { %>
+        <% if (locals.textEncript) { %>
             <p>Texto cifrado: <br>
                 <span id="criptyText">
                     <%=textEncript%>
@@ -63,15 +80,15 @@
         
         <form action="/encriptarOne/descencriptAES" method="post">
             <label for="userText">Introduce el hash a Decifrar</label>
-            <input type="text" name="userDescText" id="userText">
+            <input type="text" name="userDescText" >
 
-            <label for="userPassword">Introduce una clave que estableciste para descifrar</label>
-            <input type="text" name="userDescPassword" id="userPassword">
+            <label for="userDescPassword">Introduce una clave que estableciste para descifrar</label>
+            <input type="text" name="userDescPassword" >
 
             <input type="submit" value="Descifrar">
         </form>
 
-        <% if (typeof textDescript == 'object' && textDescript) { %>
+        <% if (locals.textDescript) { %>
             <p>Texto descifrado: <br>
                 <span id="criptyText">
                     <%=textDescript%>
