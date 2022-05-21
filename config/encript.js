@@ -24,7 +24,7 @@ module.exports={
     
     }
     ,
-    encriptFile:function(userFile){
+    encriptFile:function(userFile,mode){
         function encryp(data, key){
             return CryptoJS.AES.encrypt(data, key).toString();
         }
@@ -38,7 +38,7 @@ module.exports={
         console.log(absolutePath) */
         
         var file_inp=  userFile;
-        var op= 'enc';
+        var op=  mode;
         var pass= 'clave';
         var deep= 3;
         var file_out= 'texto.txt.cfr';

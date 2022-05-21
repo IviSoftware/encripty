@@ -4,6 +4,7 @@ var encripty = require('../config/encript');
 const path = require("path");
 const fs = require("fs");
 const https = require('https');
+const { Console } = require('console');
 let newName=0;
 
 /* GET home page. */
@@ -69,13 +70,14 @@ router.post("/encriptarOne/upload", (req, res) => {
 
 router.post('/encriptarOne/encriptFileAES',async function(req,res){
 
-  await encripty.encriptFile(newName)
+  await encripty.encriptFile(newName,'enc')
   res.redirect(`/encriptarOne?upload=ok&encripty=ok`)
 
 })
 
 router.get('/encriptarOne/dowload',function(req,res){
-  // Image will be stored at this path
+  try {
+    // Image will be stored at this path
   const file = path.join(__dirname, '..','texto.txt.cfr'); 
   //var file = __dirname + '/upload-folder/dramaticpenguin.MOV'; 
   res.download(file,'texto.txt.cfr',(err)=>{
@@ -84,7 +86,13 @@ router.get('/encriptarOne/dowload',function(req,res){
     }else{
       console.log('listo')
     }
-  }); // Set disposition and send it.
+  }); 
+  fs.unlinkSync(newName)
+  
+  } catch (error) {
+    console.log(error)
+  }
+  
 })
 
 //Acaban rutas para archivos AES
