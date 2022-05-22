@@ -21,7 +21,7 @@
     
             <input type="submit" value="Subir archivo">
         </form>
-        
+
             <% if (locals.uploadOk) { %>
                 <div class="cifrarTextContainer">
                     <p>icon</p>
@@ -41,15 +41,29 @@
     
         <h2>Desencriptar</h2>
     
-        <form action="./descencriptOne" method="post">
-            <label for="archivotxt">
+        <form action="/encriptarOne/descupload" method="post" enctype="multipart/form-data">
+            <label for="files">
                 Ingresa el archivo de texto a decencriptar
             </label>
             
-            <input type="file" name="encripttxt" id="fileEncriptUser">
+            <input type="file" name="files" id="files">
     
-            <input type="submit" value="Descencriptar">
+            <input type="submit" value="Subir">
         </form>
+
+        <% if (locals.uploadDescOk) { %>
+            <div class="cifrarTextContainer">
+                <p>icon</p>
+              
+                <form action="/encriptarOne/descencriptFileAES" method="post">
+                    <button type="submit">Desencriptar</button>
+                </form>
+               
+                <% if (locals.encriptyDescOK) { %>
+                    <a href="/encriptarOne/dowload">Descargar</a>
+                <% } %>
+            </div>
+        <% } %>
     </div>
 
     <div class="encriptTxt">

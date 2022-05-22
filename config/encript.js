@@ -29,11 +29,10 @@ module.exports={
             return CryptoJS.AES.encrypt(data, key).toString();
         }
         
-        /* function decryp(data, key){
+        function decryp(data, key){
             var wA= CryptoJS.AES.decrypt(data, key);
             return wA.toString(CryptoJS.enc.Utf8);
-        } */
-        
+        }        
      /*    const absolutePath = path.join(__dirname,'/ejemplo.txt');
         console.log(absolutePath) */
         
