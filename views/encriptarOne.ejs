@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./partials/head'); %>
     <title>encripty | Modo AES</title>
 </head>
 <body>
+    <%- include('./partials/menuHead'); %>
 
     <h1>Encriptar en Modo AES</h1>
 
-    <div class="encriptFileContainer">
+    <div class="encriptFileContainer encriptOptionContainer">
         <h2>Encriptar archivo</h2>
-        <form action="/encriptarOne/upload" method="post" enctype="multipart/form-data">
+        <form class="formFilesOne" action="/encriptarOne/upload" method="post" enctype="multipart/form-data">
             <label for="archivotxt">
                 Ingresa el archivo de texto a encriptar 
             </label>
             
+            <label for="files" class="custom-file-upload">
+                archivo txt
+            </label>
             <input type="file" name="files" id="files" required >
     
-            <input type="submit" value="Subir archivo">
+            <input class="but but-upload" type="submit" value="Subir archivo">
         </form>
 
             <% if (locals.uploadOk) { %>
@@ -41,14 +43,17 @@
     
         <h2>Desencriptar</h2>
     
-        <form action="/encriptarOne/descupload" method="post" enctype="multipart/form-data">
+        <form class="formFilesOne" action="/encriptarOne/descupload" method="post" enctype="multipart/form-data">
             <label for="files">
                 Ingresa el archivo de texto a decencriptar
             </label>
             
-            <input type="file" name="files" id="files">
+            <label for="filese" class="custom-file-upload">
+                archivo txt
+            </label>
+            <input type="file" name="files" id="filese">
     
-            <input type="submit" value="Subir">
+            <input class="but but-upload" type="submit" value="Subir archivo">
         </form>
 
         <% if (locals.uploadDescOk) { %>
@@ -66,18 +71,18 @@
         <% } %>
     </div>
 
-    <div class="encriptTxt">
-        <div class="sectionEncriptText">
+    <div class="encriptTxt encriptOptionContainer">
+        
             <h2>Encriptar texto</h2>
         
         <form action="/encriptarOne/encriptAES" method="post">
             <label for="userText">Introduce el texto a cifrar</label>
-            <input type="text" name="userText" id="userText">
+            <input  class="inputText" type="text" name="userText" id="userText">
 
             <label for="userPassword">Introduce una clave que sera necesaria para descifrar</label>
-            <input type="text" name="userPassword" id="userPassword">
+            <input class="inputText" type="text" name="userPassword" id="userPassword">
 
-            <input type="submit" value="Cifrar">
+            <input class="but but-cif" type="submit" value="Cifrar">
         </form>
 
         <% if (locals.textEncript) { %>
@@ -87,19 +92,19 @@
                 </span>
             </p>
         <% } %>
-        </div>
         
-        <div class="sectionDescriptText">
+        
+       
             <h2>Descifrar texto</h2>
         
         <form action="/encriptarOne/descencriptAES" method="post">
             <label for="userText">Introduce el hash a Decifrar</label>
-            <input type="text" name="userDescText" >
+            <input class="inputText" type="text" name="userDescText" >
 
             <label for="userDescPassword">Introduce una clave que estableciste para descifrar</label>
-            <input type="text" name="userDescPassword" >
+            <input class="inputText" type="text" name="userDescPassword" >
 
-            <input type="submit" value="Descifrar">
+            <input class="but but-des" type="submit" value="Descifrar">
         </form>
 
         <% if (locals.textDescript) { %>
@@ -109,7 +114,7 @@
                 </span>
             </p>
         <% } %>
-        </div>
+        
         
 
     </div>

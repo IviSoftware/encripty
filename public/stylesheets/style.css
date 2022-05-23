@@ -1,8 +1,126 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: white;
+  background-color: #0E100F;
+}
+
+*{
+  font-family: 'Lato', sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.encriptOptionContainer{
+  width: 800px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #232129;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  
+}
+
+.encriptTxt form{
+  display: flex;
+  flex-direction: column;
+}
+
+.formFilesOne input[type="file"]{
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.encriptTxt .inputText{
+  border: 0;
+  outline: none;
+  margin-bottom: 10px;
+  padding: 17px;
+  background-color: inherit;
+  border-bottom: solid 2px white;
+  color: white;
+  font-size: 17px;
+  width: 100px;
+  transition: width 0.8s linear 0.2s;
+}
+
+.encriptTxt .inputText:focus{
+  width: 90%;
+}
+
+.but{
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.but-des{
+  padding: 10px;
+  background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.but-des:hover{
+  background-image: linear-gradient(120deg,  #f5576c 0%, #f093fb  100%);
+  transform: scale(1.01);
+  border-radius: 10px;
+}
+
+.but-cif{
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  padding: 10px;
+  color: black;
+}
+
+.but-cif:hover{
+  background-image: linear-gradient(120deg, #8fd3f4 0%, #84fab0  100%);
+  transform: scale(1.01);
+  border-radius: 10px;
+}
+
+.but-upload{
+  background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+
+.but-upload:hover{
+  background-image: linear-gradient(120deg, #8ec5fc 0%, #e0c3fc 100%);
+  transform: scale(1.02);
+}
+
+.mainHeader{
+  width: 100%;
+  height: 70px;
+  background-color: #232129;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainHeader a{
+  text-decoration: none;
+  color: white;
+  margin-right: 10px;
+}
+
+.mainHeader h2{
+  margin-left: 10px;
+/*   background: linear-gradient(rgb(189, 12, 150),rgb(56, 6, 150)); */
+
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  -webkit-background-clip: text;
+  color: transparent;  
+
 }
