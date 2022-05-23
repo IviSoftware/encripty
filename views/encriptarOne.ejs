@@ -5,6 +5,7 @@
     <title>encripty | Modo AES</title>
 </head>
 <body>
+   
     <%- include('./partials/menuHead'); %>
 
     <h1>Encriptar en Modo AES</h1>
@@ -26,14 +27,14 @@
 
             <% if (locals.uploadOk) { %>
                 <div class="cifrarTextContainer">
-                    <p>icon</p>
+                    <i class="fa-solid fa-file"></i>
                   
                     <form action="/encriptarOne/encriptFileAES" method="post">
-                        <button type="submit">Encriptar</button>
+                        <button class="but but-cif" type="submit">Encriptar</button>
                     </form>
                    
                     <% if (locals.encriptyOK) { %>
-                        <a href="/encriptarOne/dowload">Descargar</a>
+                        <a href="/encriptarOne/dowload" class="but but-cif but-dow">Descargar</a>
                     <% } %>
                 </div>
             <% } %>
@@ -58,14 +59,14 @@
 
         <% if (locals.uploadDescOk) { %>
             <div class="cifrarTextContainer">
-                <p>icon</p>
+                <i class="fa-solid fa-file"></i>
               
                 <form action="/encriptarOne/descencriptFileAES" method="post">
-                    <button type="submit">Desencriptar</button>
+                    <button class="but but-cif" type="submit">Desencriptar</button>
                 </form>
                
                 <% if (locals.encriptyDescOK) { %>
-                    <a href="/encriptarOne/dowload">Descargar</a>
+                    <a href="/encriptarOne/dowload" class="but but-cif but-dow">Descargar</a>
                 <% } %>
             </div>
         <% } %>

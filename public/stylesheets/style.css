@@ -124,3 +124,56 @@ a {
   color: transparent;  
 
 }
+
+.cifrarTextContainer i{
+  font-size: 25px;
+  margin-right: 15px;
+}
+
+.cifrarTextContainer{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.cifrarTextContainer .but-dow{
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.index-options{
+  margin-top: 60px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.opc{
+  width: 500px;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #232129;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.4s linear 0.2s;
+
+}
+
+.opc a{
+  text-decoration: none;
+  color: white;  
+}
+
+.opc i{
+  font-size: 50px;
+  margin-right: 10px;
+  color: #048b6e;
+}
+
+.opc:hover{
+  background-color: #4f4b5c;
+}
