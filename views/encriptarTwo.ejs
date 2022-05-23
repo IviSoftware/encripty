@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('./partials/head'); %>
+    <title>encripty | Modo AES</title>
+</head>
+<body>
+   
+    <%- include('./partials/menuHead'); %>
+
+    <h1>Encriptar en Modo SHA</h1>
+
+    <div class="encriptFileContainer encriptOptionContainer">
+        <h2>Encriptar archivo</h2>
+        <form class="formFilesOne" action="/encriptarOne/upload" method="post" enctype="multipart/form-data">
+            <label for="archivotxt">
+                Ingresa el archivo de texto a encriptar 
+            </label>
+            
+            <label for="files" class="custom-file-upload">
+                archivo txt
+            </label>
+            <input type="file" name="files" id="files" required >
+    
+            <input class="but but-upload" type="submit" value="Subir archivo">
+        </form>
+
+            <% if (locals.uploadOk) { %>
+                <div class="cifrarTextContainer">
+                    <i class="fa-solid fa-file"></i>
+                  
+                    <form action="/encriptarOne/encriptFileAES" method="post">
+                        <button class="but but-cif" type="submit">Encriptar</button>
+                    </form>
+                   
+                    <% if (locals.encriptyOK) { %>
+                        <a href="/encriptarOne/dowload" class="but but-cif but-dow">Descargar</a>
+                    <% } %>
+                </div>
+            <% } %>
+        
+
+
+    
+        <h2>Desencriptar</h2>
+    
+        <form class="formFilesOne" action="/encriptarOne/descupload" method="post" enctype="multipart/form-data">
+            <label for="files">
+                Ingresa el archivo de texto a decencriptar
+            </label>
+            
+            <label for="filese" class="custom-file-upload">
+                archivo txt
+            </label>
+            <input type="file" name="files" id="filese">
+    
+            <input class="but but-upload" type="submit" value="Subir archivo">
+        </form>
+
+        <% if (locals.uploadDescOk) { %>
+            <div class="cifrarTextContainer">
+                <i class="fa-solid fa-file"></i>
+              
+                <form action="/encriptarOne/descencriptFileAES" method="post">
+                    <button class="but but-cif" type="submit">Desencriptar</button>
+                </form>
+               
+                <% if (locals.encriptyDescOK) { %>
+                    <a href="/encriptarOne/dowload" class="but but-cif but-dow">Descargar</a>
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+
+    <div class="encriptTxt encriptOptionContainer">
+        
+            <h2>Encriptar texto</h2>
+        
+        <form action="/encriptarTwo/encriptSHA" method="post">
+            <label for="userText">Introduce el texto a cifrar</label>
+            <input  class="inputText" type="text" name="userText" id="userText">
+
+            <label for="userPassword">Introduce una clave que sera necesaria para descifrar</label>
+            <input class="inputText" type="text" name="userPassword" id="userPassword">
+
+            <input class="but but-cif" type="submit" value="Cifrar">
+        </form>
+
+        <% if (locals.textEncript) { %>
+            <p>Texto cifrado: <br>
+                <span id="criptyText">
+                    <%=textEncript%>
+                </span>
+            </p>
+        <% } %>
+        
+        
+       
+            <h2>Descifrar texto</h2>
+        
+        <form action="/encriptarTwo/descencriptSHA" method="post">
+            <label for="userText">Introduce el hash a Decifrar</label>
+            <input class="inputText" type="text" name="userDescText" >
+
+           <label for="userDescPassword">Introduce una clave que estableciste para descifrar</label>
+            <input class="inputText" type="text" name="userDescPassword" > 
+
+            <input class="but but-des" type="submit" value="Descifrar">
+        </form>
+
+        <% if (locals.textDescript) { %>
+            <p>Texto descifrado: <br>
+                <span id="criptyText">
+                    <%=textDescript%>
+                </span>
+            </p>
+        <% } %>
+        
+        
+
+    </div>
+    
+
+</body>
+</html>

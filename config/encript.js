@@ -79,6 +79,17 @@ module.exports={
         });
         
         
+    },
+    encriptTextSha:function(messageUser,keyUser){
+        let message = messageUser;
+        let key = keyUser;
+        // Uso 2: Todo el uso, debido a que aes contiene cifrado y descifrado, hay dos métodos, no puede usar AES directamente para cifrar
+        let result = CryptoJS.DES.encrypt(message, key);; 
+        return result
+    },
+    descriptTextSha:function(hashResu,key){
+        let result2= CryptoJS.DES.decrypt(hashResu, key).toString(CryptoJS.enc.Utf8);
+        return result2
     }
 }
 

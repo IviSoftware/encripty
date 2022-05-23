@@ -140,4 +140,40 @@ router.get('/encriptarOne/desDowload',function(req,res){
 
 //Acaban rutas para archivos AES
 
+
+//RUTAS PARA SHA
+
+router.get('/encriptarTwo',function(req,res){
+  const {encriptext2,descencriptext2,upload2,encripty2,uploaddesc2,descript2}= req.query;
+  if(encriptext2){
+    res.render('encriptarTwo.ejs',{textEncript:encriptext2})
+  }else if(descencriptext2){
+    res.render('encriptarTwo.ejs',{textDescript:descencriptext2})
+  }else if(upload2 && !encripty2){
+    res.render('encriptarTwo.ejs',{uploadOk:upload2})
+  }else if(upload2 && encripty2){
+    res.render('encriptarTwo.ejs',{uploadOk:upload2,encriptyOK:encripty2})
+  }else if(uploaddesc2 && !descript2){
+    res.render('encriptarTwo.ejs',{uploadDescOk:uploaddesc2})
+  }else if(uploaddesc2 && descript2){
+    res.render('encriptarTwo.ejs',{uploadDescOk:uploaddesc2,encriptyDescOK:descript2})
+  }
+  else{
+    res.render('encriptarTwo.ejs')
+  }
+})
+
+router.post('/encriptarTwo/encriptSHA',function(req,res){
+  let result = encripty.encriptTextSha(req.body.userText,req.body.userPassword);
+  var string = encodeURIComponent(result);
+  res.redirect('/encriptarTwo?encriptext2='+string)
+})
+
+router.post('/encriptarTwo/descencriptSHA',function(req,res){
+  let result2 = encripty.descriptTextSha(req.body.userDescText,req.body.userDescPassword);
+  var string2 = encodeURIComponent(result2);
+  res.redirect('/encriptarTwo?descencriptext2='+string2)
+})
+
+
 module.exports = router;

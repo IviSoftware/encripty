@@ -160,6 +160,7 @@ a {
   align-items: center;
   cursor: pointer;
   transition: background-color 0.4s linear 0.2s;
+  margin-bottom: 15px;
 
 }
 
