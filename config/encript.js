@@ -11,8 +11,6 @@ module.exports={
     encriptText:function(messageUser,keyUser){
         let message = messageUser;
         let key = keyUser;
-       
-        // Uso 2: Todo el uso, debido a que aes contiene cifrado y descifrado, hay dos métodos, no puede usar AES directamente para cifrar
         let result = CryptoJS.AES.encrypt(message, key);      
         return result
     }
@@ -90,6 +88,21 @@ module.exports={
     descriptTextSha:function(hashResu,key){
         let result2= CryptoJS.DES.decrypt(hashResu, key).toString(CryptoJS.enc.Utf8);
         return result2
+    },
+    decripFile:function(fileUser,mode){
+        var file_inp=  fileUser;
+        var op=  mode;
+        var pass= 'clave';
+        var deep= 3;
+        var file_out= 'texto.txt.cfr';
+        var wA= CryptoJS.DES.decrypt(data, key);
+        wA.toString(CryptoJS.enc.Utf8);
+        let dataS= binary.toString("ascii");
+            let dec=dataS;
+            for (let i = 1; i <= deep; i++) {
+                dec= decryp(dec, pass); 
+            }
+            buffer = Buffer.from(dec, 'base64');
     }
 }
 
