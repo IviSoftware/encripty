@@ -30,10 +30,7 @@ module.exports={
         function decryp(data, key){
             var wA= CryptoJS.AES.decrypt(data, key);
             return wA.toString(CryptoJS.enc.Utf8);
-        }        
-     /*    const absolutePath = path.join(__dirname,'/ejemplo.txt');
-        console.log(absolutePath) */
-        
+        }             
         var file_inp=  userFile;
         var op=  mode;
         var pass= 'clave';

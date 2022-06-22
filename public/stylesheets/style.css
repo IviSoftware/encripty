@@ -159,7 +159,8 @@ a {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.4s linear 0.2s;
+  transition: background-color 0.4s linear ;
+  transition: transform 0.4s linear ;
   margin-bottom: 15px;
 
 }
@@ -177,4 +178,5 @@ a {
 
 .opc:hover{
   background-color: #4f4b5c;
+  transform: rotate(5deg);
 }
